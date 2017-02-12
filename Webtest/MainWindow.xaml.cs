@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net;
+using System.Text.RegularExpressions;
 
 namespace Webtest
 {
@@ -23,6 +25,28 @@ namespace Webtest
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+            WebClient wc = new WebClient();
+            string url = textBox.Text;
+            string save_path = textBox2.Text;
+            string name = textBox1.Text;
+            wc.DownloadFile(url, save_path + name);
+            
+            
+
+
+        }
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            Nullable<bool> result = dlg.ShowDialog();
+            string PH = dlg.FileName;
+            MessageBox.Show(PH);
         }
     }
 }
